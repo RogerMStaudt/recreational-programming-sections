@@ -1,0 +1,9 @@
+#region-word {
+    display: flex;
+    gap: 1rem;
+}
+
+#region-word p {
+    padding: 0.1rem;
+    border-bottom: 1px solid black;
+}
