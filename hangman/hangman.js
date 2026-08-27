@@ -1,3 +1,6 @@
+const regionWord = document.getElementById('region-word');
+const hiddenWord = document.getElementById('hidden-word');
+
 async function generate() {
     try {
         var url = "https://random-word-api.herokuapp.com/word";
@@ -19,7 +22,7 @@ async function generate() {
 }
 
 function refresh(word) {
-    const regionWord = document.getElementById('region-word');
+    hiddenWord.value = word;
 
     regionWord.replaceChildren();
 

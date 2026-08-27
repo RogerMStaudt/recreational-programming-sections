@@ -1,3 +1,16 @@
+body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+#container {
+    width: 40%;
+}
+
 #region-word {
     display: flex;
     gap: 1rem;
@@ -6,4 +19,16 @@
 #region-word p {
     padding: 0.1rem;
     border-bottom: 1px solid black;
+    font-size: 3rem;
+    width: 3rem;
+    text-align: center;
+}
+
+#keyboard {
+    margin-top: 1rem;
+}
+
+.key {
+    width: 3rem;
+    height: 3rem;
 }
