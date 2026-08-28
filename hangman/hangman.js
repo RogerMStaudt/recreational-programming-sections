@@ -22,11 +22,12 @@ async function generate() {
 }
 
 function refresh(word) {
-    word = word.toUpperCase()
+    word = word.toUpperCase();
     hiddenWord.value = word;
-    console.log('word = ' + word)
 
     regionWord.replaceChildren();
+
+    console.log(word)
 
     for (let i = 0; i < word.length; i++) {
         const letter = document.createElement("p");
@@ -36,14 +37,16 @@ function refresh(word) {
     }
 }
 
-function keyClick(key) {
-    const myword = hiddenWord.value;
-    //myword.includes(key)
-    if (myword.indexOf(key) !== -1) {
-        for (let i = 0; i < hiddenWord.length; i++) {
-            if (key == hiddenWord[i]) {
+function keyClick(key, element) {
+    const rightWord = hiddenWord.value;
+    
+    if (rightWord.includes(key)) {
+        for (let i = 0; i < rightWord.length; i++) {
+            if (key == rightWord[i]) {
                 const correctLetter = document.getElementById("letter-" + i);
                 correctLetter.innerText = key;
+
+                element.disabled = true;
             }
         }
     }
