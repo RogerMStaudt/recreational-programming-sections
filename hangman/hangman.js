@@ -1,5 +1,6 @@
-const regionWord = document.getElementById('region-word');
-const hiddenWord = document.getElementById('hidden-word');
+const regionWord      = document.getElementById('region-word');
+const answer          = document.getElementById('answer');
+const keyboardButtons = document.querySelectorAll(".key");
 
 async function generate() {
     try {
@@ -23,7 +24,9 @@ async function generate() {
 
 function refresh(word) {
     word = word.toUpperCase();
-    hiddenWord.value = word;
+    answer.value = word;
+
+    enableKeyboard();
 
     regionWord.replaceChildren();
 
@@ -37,12 +40,12 @@ function refresh(word) {
     }
 }
 
-function keyClick(key, element) {
-    const rightWord = hiddenWord.value;
+function keyClick(element) {
+    const key = element.innerText;
     
-    if (rightWord.includes(key)) {
-        for (let i = 0; i < rightWord.length; i++) {
-            if (key == rightWord[i]) {
+    if (answer.value.includes(key)) {
+        for (let i = 0; i < answer.value.length; i++) {
+            if (key == answer.value[i]) {
                 const correctLetter = document.getElementById("letter-" + i);
                 correctLetter.innerText = key;
 
@@ -50,4 +53,29 @@ function keyClick(key, element) {
             }
         }
     }
+}
+
+document.addEventListener("keypress", (event) => {
+    let keyTyped = event.key.toUpperCase();
+
+    if (answer.value.includes(keyTyped)) {
+        for (let i = 0; i < answer.value.length; i++) {
+            if (keyTyped == answer.value[i]) {
+                const correctLetter = document.getElementById("letter-" + i);
+                correctLetter.innerText = keyTyped;
+
+                keyboardButtons.forEach(button => {
+                    if (keyTyped == button.innerText) {
+                        button.disabled = true;
+                    }
+                });
+            }
+        }
+    }
+})
+
+function enableKeyboard() {
+    keyboardButtons.forEach(button => {
+        button.disabled = false;
+    });
 }
