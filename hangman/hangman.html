@@ -8,43 +8,59 @@
 </head>
 <body>
     <div id="container">
-        <button onclick="generate()">Generate Word</button>
+        <div id="region-man">
+            <button onclick="generate()">Generate Word</button>
+            <canvas id="canvas">
+            Desculpe-me, seu navegador não suporta o elemento &lt;canvas&gt;.
+            </canvas>
+        </div>
+        <div id="region-game">
+            <div id="region-game-column">
+                <div id="region-game-words">
+                    <h1>Hangman - The best game in the world</h1>
+                    <div id="tip"></div>
+                    <div id="region-word"></div>
+                    <input id="answer" type="hidden">
+                </div>
 
-        <div>Tip:</div>
-        <div id="tip"></div>
-        <div id="region-word"></div>
-        <input id="answer" type="hidden">
+                <div id="region-game-keyboard">
+                    <div id="keyboard">
+                        <button onclick="keyClick(this)" class="key">Q</button>
+                        <button onclick="keyClick(this)" class="key">W</button>
+                        <button onclick="keyClick(this)" class="key">E</button>
+                        <button onclick="keyClick(this)" class="key">R</button>
+                        <button onclick="keyClick(this)" class="key">T</button>
+                        <button onclick="keyClick(this)" class="key">Y</button>
+                        <button onclick="keyClick(this)" class="key">U</button>
+                        <button onclick="keyClick(this)" class="key">I</button>
+                        <button onclick="keyClick(this)" class="key">O</button>
+                        <button onclick="keyClick(this)" class="key">P</button>
 
-        <div id="keyboard">
-            <button onclick="keyClick(this)" class="key">Q</button>
-            <button onclick="keyClick(this)" class="key">W</button>
-            <button onclick="keyClick(this)" class="key">E</button>
-            <button onclick="keyClick(this)" class="key">R</button>
-            <button onclick="keyClick(this)" class="key">T</button>
-            <button onclick="keyClick(this)" class="key">Y</button>
-            <button onclick="keyClick(this)" class="key">U</button>
-            <button onclick="keyClick(this)" class="key">I</button>
-            <button onclick="keyClick(this)" class="key">O</button>
-            <button onclick="keyClick(this)" class="key">P</button>
-            <br>
-            <button onclick="keyClick(this)" class="key">A</button>
-            <button onclick="keyClick(this)" class="key">S</button>
-            <button onclick="keyClick(this)" class="key">D</button>
-            <button onclick="keyClick(this)" class="key">F</button>
-            <button onclick="keyClick(this)" class="key">G</button>
-            <button onclick="keyClick(this)" class="key">H</button>
-            <button onclick="keyClick(this)" class="key">J</button>
-            <button onclick="keyClick(this)" class="key">K</button>
-            <button onclick="keyClick(this)" class="key">L</button>
-            <br>
-            <button onclick="keyClick(this)" class="key">Z</button>
-            <button onclick="keyClick(this)" class="key">X</button>
-            <button onclick="keyClick(this)" class="key">C</button>
-            <button onclick="keyClick(this)" class="key">V</button>
-            <button onclick="keyClick(this)" class="key">B</button>
-            <button onclick="keyClick(this)" class="key">N</button>
-            <button onclick="keyClick(this)" class="key">M</button>
-            <button onclick="keyClick(this)" class="key">-</button>
+                        <span class="spacer half"></span>
+                        <button onclick="keyClick(this)" class="key">A</button>
+                        <button onclick="keyClick(this)" class="key">S</button>
+                        <button onclick="keyClick(this)" class="key">D</button>
+                        <button onclick="keyClick(this)" class="key">F</button>
+                        <button onclick="keyClick(this)" class="key">G</button>
+                        <button onclick="keyClick(this)" class="key">H</button>
+                        <button onclick="keyClick(this)" class="key">J</button>
+                        <button onclick="keyClick(this)" class="key">K</button>
+                        <button onclick="keyClick(this)" class="key">L</button>
+                        <span class="spacer half"></span>
+
+                        <span class="spacer full"></span>
+                        <button onclick="keyClick(this)" class="key">Z</button>
+                        <button onclick="keyClick(this)" class="key">X</button>
+                        <button onclick="keyClick(this)" class="key">C</button>
+                        <button onclick="keyClick(this)" class="key">V</button>
+                        <button onclick="keyClick(this)" class="key">B</button>
+                        <button onclick="keyClick(this)" class="key">N</button>
+                        <button onclick="keyClick(this)" class="key">M</button>
+                        <button onclick="keyClick(this)" class="key">-</button>
+                        <span class="spacer full"></span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     

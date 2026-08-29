@@ -49,10 +49,12 @@ function keyClick(element) {
                 const correctLetter = document.getElementById("letter-" + i);
                 correctLetter.innerText = key;
 
-                element.disabled = true;
             }
         }
+    } else {
+        removeLimb();
     }
+    element.disabled = true;
 }
 
 document.addEventListener("keypress", (event) => {
@@ -71,6 +73,8 @@ document.addEventListener("keypress", (event) => {
                 });
             }
         }
+    } else {
+        removeLimb();
     }
 })
 
@@ -81,13 +85,17 @@ function enableKeyboard() {
 }
 
 function setTip(tip) {
-    tipField.innerText = tip;
+    tipField.innerText = 'Tip: ' + tip;
 }
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
+}
+
+function removeLimb() {
+    // hello
 }
 
 const words = [
