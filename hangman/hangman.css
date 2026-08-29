@@ -16,12 +16,17 @@ body {
     gap: 1rem;
 }
 
-#region-word p {
+#region-word .letter {
     padding: 0.1rem;
     border-bottom: 1px solid black;
     font-size: 3rem;
     width: 3rem;
     text-align: center;
+}
+
+#region-word .space {
+    padding: 0.1rem;
+    width: 3rem;
 }
 
 #keyboard {
