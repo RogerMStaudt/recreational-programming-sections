@@ -9,6 +9,7 @@ function generate() {
 
     const tip  = words[randomNumberTip].tip;
     const word = words[randomNumberTip].words[randomNumberWords];
+   //const word = 'ROGER MIGUEL STAUDT BURRO DEMAIS';
 
     refresh(tip, word);
 }
