@@ -8,8 +8,8 @@ function generate() {
     randomNumberWords = getRandomInt(0, words[randomNumberTip].words.length);
 
     const tip  = words[randomNumberTip].tip;
-    const word = words[randomNumberTip].words[randomNumberWords];
-   //const word = 'ROGER MIGUEL STAUDT BURRO DEMAIS';
+   // const word = words[randomNumberTip].words[randomNumberWords];
+   const word = 'ROGER MIGUEL STAUDT BURROOOOO DEMAIS';
 
     refresh(tip, word);
 }
@@ -25,19 +25,25 @@ function refresh(tip, word) {
     regionWord.replaceChildren();
 
     console.log(word)
+        
+    let divWord = document.createElement("div");
+    divWord.setAttribute("class", "div-word");
 
     for (let i = 0; i < word.length; i++) {
-        const letter = document.createElement("p");
 
         if (word[i] == ' ') {
-            letter.setAttribute("id",    "space-" + i);
-            letter.setAttribute("class", "space");
+            regionWord.appendChild(divWord);
+
+            divWord = document.createElement("div");
+            divWord.setAttribute("class", "div-word");
         } else {
+            const letter = document.createElement("p");
+
             letter.setAttribute("id",    "letter-" + i);
             letter.setAttribute("class", "letter");
-        }
 
-        regionWord.appendChild(letter);
+            divWord.appendChild(letter);
+        }
     }
 }
 
