@@ -8,8 +8,7 @@ function generate() {
     randomNumberWords = getRandomInt(0, words[randomNumberTip].words.length);
 
     const tip  = words[randomNumberTip].tip;
-   // const word = words[randomNumberTip].words[randomNumberWords];
-   const word = 'ROGER MIGUEL STAUDT BURROOOOO DEMAIS';
+    const word = words[randomNumberTip].words[randomNumberWords];
 
     refresh(tip, word);
 }
@@ -29,6 +28,7 @@ function refresh(tip, word) {
     let divWord = document.createElement("div");
     divWord.setAttribute("class", "div-word");
 
+    console.log('word.length = ' + word.length);
     for (let i = 0; i < word.length; i++) {
 
         if (word[i] == ' ') {
@@ -45,6 +45,7 @@ function refresh(tip, word) {
             divWord.appendChild(letter);
         }
     }
+    regionWord.appendChild(divWord);
 }
 
 function keyClick(element) {
