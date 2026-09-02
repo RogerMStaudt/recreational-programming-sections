@@ -2,11 +2,14 @@ const regionWord      = document.getElementById('region-word');
 const answer          = document.getElementById('answer');
 const keyboardButtons = document.querySelectorAll(".key");
 const tipField        = document.getElementById('tip');
-const canvas          = document.getElementById('canvas');
 
-window.addEventListener('load', function() {
-    drawMan();
-});
+const canvas          = document.getElementById('canvas');
+const head     = document.getElementById("head");
+const body     = document.getElementById("body");
+const leftArm  = document.getElementById("left-arm");
+const rightArm = document.getElementById("right-arm");
+const leftLeg  = document.getElementById("left-leg");
+const rightleg = document.getElementById("right-leg");
 
 function generate() {
     randomNumberTip   = getRandomInt(0, words.length);
@@ -51,7 +54,7 @@ function refresh(tip, word) {
     }
     regionWord.appendChild(divWord);
 
-    //drawMan();
+    drawMan();
 }
 
 function keyClick(element) {
@@ -113,21 +116,12 @@ function removeLimb() {
 }
 
 function drawMan() {
-    const head = canvas.getContext("2d");
-
-    head.beginPath();
-    head.arc(200, 30, 20, 0, 2 * Math.PI);
-    head.strokeStyle = "black";
-    head.lineWidth = 1;
-    head.stroke();
-
-    //const body     = canvas.getContext("2d");
-    //const leftArm  = canvas.getContext("2d");
-    //const rightArm = canvas.getContext("2d");
-    //const leftLeg  = canvas.getContext("2d");
-    //const rightleg = canvas.getContext("2d");
-
-
+    head.style.stroke     = "black";
+    body.style.stroke     = "black";
+    leftArm.style.stroke  = "black";
+    rightArm.style.stroke = "black";
+    leftLeg.style.stroke  = "black";
+    rightleg.style.stroke = "black";
 }
 
 const words = [
