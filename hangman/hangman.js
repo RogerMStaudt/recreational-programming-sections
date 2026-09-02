@@ -1,15 +1,20 @@
 const regionWord      = document.getElementById('region-word');
 const answer          = document.getElementById('answer');
 const keyboardButtons = document.querySelectorAll(".key");
+const manLimbs        = document.querySelectorAll(".man");
 const tipField        = document.getElementById('tip');
 
-const canvas          = document.getElementById('canvas');
+const canvas   = document.getElementById('canvas');
 const head     = document.getElementById("head");
 const body     = document.getElementById("body");
 const leftArm  = document.getElementById("left-arm");
 const rightArm = document.getElementById("right-arm");
 const leftLeg  = document.getElementById("left-leg");
 const rightleg = document.getElementById("right-leg");
+
+window.onload = function() {
+    generate();
+};
 
 function generate() {
     randomNumberTip   = getRandomInt(0, words.length);
@@ -112,7 +117,13 @@ function getRandomInt(min, max) {
 }
 
 function removeLimb() {
-    // hello
+    for (const limb of manLimbs) {
+        if (limb.style.stroke == 'black') {
+            limb.style.stroke = 'red';
+
+            break;
+        }
+    }
 }
 
 function drawMan() {
