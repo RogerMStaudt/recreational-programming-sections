@@ -3,6 +3,7 @@ const answer          = document.getElementById('answer');
 const keyboardButtons = document.querySelectorAll(".key");
 const manLimbs        = document.querySelectorAll(".man");
 const tipField        = document.getElementById('tip');
+const wordTyped       = document.getElementById('word-typed');
 
 const canvas   = document.getElementById('canvas');
 const head     = document.getElementById("head");
@@ -11,6 +12,9 @@ const leftArm  = document.getElementById("left-arm");
 const rightArm = document.getElementById("right-arm");
 const leftLeg  = document.getElementById("left-leg");
 const rightleg = document.getElementById("right-leg");
+
+const victory = 'victory';
+const defeat  = 'defeat';
 
 window.onload = function() {
     generate();
@@ -28,7 +32,8 @@ function generate() {
 
 function refresh(tip, word) {
     word = word.toUpperCase();
-    answer.value = word;
+    answer.value    = word;
+    wordTyped.value = '';
 
     enableKeyboard();
 
@@ -65,12 +70,19 @@ function refresh(tip, word) {
 function keyClick(element) {
     const key = element.innerText;
     
-    if (answer.value.includes(key)) {
+    if (answer.value.includes(key) && !element.disabled) {
         for (let i = 0; i < answer.value.length; i++) {
             if (key == answer.value[i]) {
                 const correctLetter = document.getElementById("letter-" + i);
                 correctLetter.innerText = key;
 
+                wordTyped.value = wordTyped.value + key;
+
+                if (wordTyped.value == answer.value) {
+                    message(victory);
+
+                    break;
+                }
             }
         }
     } else {
@@ -88,11 +100,21 @@ document.addEventListener("keypress", (event) => {
                 const correctLetter = document.getElementById("letter-" + i);
                 correctLetter.innerText = keyTyped;
 
+                wordTyped.value = wordTyped.value + keyTyped;
+
                 keyboardButtons.forEach(button => {
                     if (keyTyped == button.innerText) {
                         button.disabled = true;
                     }
                 });
+
+                console.log('wordTyped.value = ' + wordTyped.value);
+                console.log('answer.value = ' + answer.value);
+                if (wordTyped.value == answer.value) {
+                    message(victory);
+
+                    break;
+                }
             }
         }
     } else {
@@ -120,9 +142,21 @@ function removeLimb() {
     for (const limb of manLimbs) {
         if (limb.style.stroke == 'black') {
             limb.style.stroke = 'red';
-
-            break;
+            
+            if (limb.id == 'left-leg') {
+                message(defeat);
+            } else {
+                break;
+            }
         }
+    }
+}
+
+function message(type) {
+    if (type == victory) {
+        alert('YOU WONNNN');
+    } else {
+        alert('YOUre a LOOOOOSER');
     }
 }
 
