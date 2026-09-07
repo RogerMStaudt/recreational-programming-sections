@@ -3,7 +3,6 @@ const answer          = document.getElementById('answer');
 const keyboardButtons = document.querySelectorAll(".key");
 const manLimbs        = document.querySelectorAll(".man");
 const tipField        = document.getElementById('tip');
-const wordTyped       = document.getElementById('word-typed');
 
 const canvas   = document.getElementById('canvas');
 const head     = document.getElementById("head");
@@ -31,9 +30,8 @@ function generate() {
 }
 
 function refresh(tip, word) {
-    word = word.toUpperCase();
-    answer.value    = word;
-    wordTyped.value = '';
+    word         = word.toUpperCase();
+    answer.value = word;
 
     enableKeyboard();
 
@@ -76,9 +74,7 @@ function keyClick(element) {
                 const correctLetter = document.getElementById("letter-" + i);
                 correctLetter.innerText = key;
 
-                wordTyped.value = wordTyped.value + key;
-
-                if (wordTyped.value == answer.value) {
+                if (wordIsFilled()) {
                     message(victory);
 
                     break;
@@ -100,7 +96,6 @@ document.addEventListener("keypress", (event) => {
                 const correctLetter = document.getElementById("letter-" + i);
                 correctLetter.innerText = keyTyped;
 
-                wordTyped.value = wordTyped.value + keyTyped;
 
                 keyboardButtons.forEach(button => {
                     if (keyTyped == button.innerText) {
@@ -108,9 +103,7 @@ document.addEventListener("keypress", (event) => {
                     }
                 });
 
-                console.log('wordTyped.value = ' + wordTyped.value);
-                console.log('answer.value = ' + answer.value);
-                if (wordTyped.value == answer.value) {
+                if (wordIsFilled()) {
                     message(victory);
 
                     break;
@@ -152,12 +145,32 @@ function removeLimb() {
     }
 }
 
-function message(type) {
-    if (type == victory) {
-        alert('YOU WONNNN');
-    } else {
-        alert('YOUre a LOOOOOSER');
+function wordIsFilled() {
+    const wordLetters = document.querySelectorAll(".letter");
+    var hasLetterEmpty;
+
+    for (const letter of wordLetters) {
+        if (letter.textContent.trim() == '') {
+            hasLetterEmpty = true;
+
+            break;
+        }
     }
+
+    return !hasLetterEmpty;
+}
+
+function message(type) {
+    setTimeout(() => {
+        if (type == victory) {
+            alert('YOU WONNNN');
+        } else {
+            alert('YOUre a LOOOOOSER');
+        }
+
+        
+        generate();
+    }, 100);
 }
 
 function drawMan() {
